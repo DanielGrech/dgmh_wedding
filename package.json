@@ -1,0 +1,38 @@
+{
+  "name": "mel-daniel-wedding-app",
+  "version": "0.0.1",
+  "description": "Web app for the wedding of Daniel & Melanie",
+  "repository": "https://github.com/danielgrech/mel-daniel-wedding-app",
+  "main": "js/app.js",
+  "dependencies": {
+    "flux": "^2.0.0",
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
+    "react": "^0.12.0",
+    "material-ui": "0.7.2"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "envify": "^3.0.0",
+    "jest-cli": "~0.1.17",
+    "less": "^2.4.0",
+    "reactify": "^0.15.2",
+    "uglify-js": "~2.4.15",
+    "watchify": "^2.1.1"
+  },
+  "scripts": {
+    "start": "lessc less/main.less > css/main.css && watchify -o js/bundle.js -v -d js/app.js",
+    "build": "browserify . -t [envify --NODE_ENV production] | uglifyjs -cm > js/bundle.min.js",
+    "test": "jest"
+  },
+  "author": "Daniel Grech",
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "jest": {
+    "rootDir": "./js"
+  }
+}
