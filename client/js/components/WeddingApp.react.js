@@ -2,11 +2,12 @@ var React = require('react');
 var Mui = require('material-ui')
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
+var strings = require('../strings');
 
 var menuItems = [
-  {route: 'home', text : 'The Wedding'},
-  {route: 'people', text : 'The People'},
-  {route: 'photos', text : 'The Photos'}
+  {route: strings.route.home, text : strings.nav_menu.wedding},
+  {route: strings.route.people, text : strings.nav_menu.people},
+  {route: strings.route.photos, text : strings.nav_menu.photos},
 ]
 
 var WeddingApp = React.createClass({
@@ -18,7 +19,7 @@ var WeddingApp = React.createClass({
     return (
     	<div>
 	    	<Mui.AppBar 
-	    		title="Daniel &amp; Melanie"
+	    		title={strings.title.home}
 	    		zDepth={0}
 	    		onMenuIconButtonTouchTap={this._onActionBarToggleClicked} />
 	    	

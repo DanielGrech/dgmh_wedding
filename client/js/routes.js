@@ -12,18 +12,20 @@ var ThePeople = require('./components/pages/ThePeople.react')
 var ThePhotos = require('./components/pages/ThePhotos.react')
 var NotFound = require('./components/NotFound.react')
 
+var strings = require('./strings');
+
 var AppRoutes = (
 	<Route name="app" path="/" handler={WeddingApp}>
-		<Route name="home" handler={TheWedding} />
+		<Route name={strings.route.home} handler={TheWedding} />
 		<Redirect from="thewedding" to="home" />
 		<Redirect from="wedding" to="home" />
 		
 
-		<Route name="people" handler={ThePeople} />
+		<Route name={strings.route.people} handler={ThePeople} />
 		<Redirect from="thepeople" to="people" />
 
 
-		<Route name="photos" handler={ThePhotos} />
+		<Route name={strings.route.photos} handler={ThePhotos} />
 		<Redirect from="thephotos" to="photos" />
 
 		<DefaultRoute handler={TheWedding} />
