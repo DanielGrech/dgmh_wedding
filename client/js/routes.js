@@ -7,9 +7,9 @@ var DefaultRoute = Router.DefaultRoute;
 var NotFoundRoute = Router.NotFoundRoute;
 
 var WeddingApp = require('./components/WeddingApp.react')
-var TheWedding = require('./components/TheWedding.react')
-var ThePeople = require('./components/ThePeople.react')
-var ThePhotos = require('./components/ThePhotos.react')
+var TheWedding = require('./components/pages/TheWedding.react')
+var ThePeople = require('./components/pages/ThePeople.react')
+var ThePhotos = require('./components/pages/ThePhotos.react')
 var NotFound = require('./components/NotFound.react')
 
 var AppRoutes = (
