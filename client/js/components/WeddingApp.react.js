@@ -3,15 +3,18 @@ var Mui = require('material-ui')
 var Router = require('react-router');
 var RouteHandler = Router.RouteHandler;
 
+var menuItems = [
+  {route: 'home', text : 'The Wedding'},
+  {route: 'people', text : 'The People'},
+  {route: 'photos', text : 'The Photos'}
+]
+
 var WeddingApp = React.createClass({
 
-  render: function() {
-  	var menuItems = [
-		{text : 'The Wedding'},
-		{text : 'The People'},
-		{text : 'The Photos'}
-    ]
+  mixins: [Router.Navigation, Router.State],
 
+  render: function() {
+  	
     return (
     	<div>
 	    	<Mui.AppBar 
@@ -23,7 +26,7 @@ var WeddingApp = React.createClass({
 	    		ref="leftNav"
 	    		menuItems={menuItems}
 	    		docked={false}
-	    		selectedIndex={0}
+	    		selectedIndex={this._getSelectedIndex()}
 	    		onChange={this._onMenuItemClick} />
 
 	    	<RouteHandler />
@@ -31,10 +34,19 @@ var WeddingApp = React.createClass({
     );
   },
 
+  _getSelectedIndex: function() {
+    for (var i = 0; i < menuItems.length; i++) {
+      var item = menuItems[i]
+      if (this.context.router.isActive(item.route)) {
+        return i;
+      }
+    }
+
+    return 0;
+  },
+
   _onMenuItemClick: function(e, selectedIndex, menuItem) {
-  	console.log(e);
-  	console.log(selectedIndex);
-  	console.log(menuItem)
+  	this.context.router.transitionTo(menuItem.route);
   },
 
   _onActionBarToggleClicked: function(e) {
